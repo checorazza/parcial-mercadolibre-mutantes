@@ -1,13 +1,17 @@
 package com.example.Parcial.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name="ADN")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ADN {
     /*
 	CORAZZA MARÍA CECILIA

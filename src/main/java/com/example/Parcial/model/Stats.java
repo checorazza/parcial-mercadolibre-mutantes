@@ -1,7 +1,11 @@
 package com.example.Parcial.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @AllArgsConstructor
 public class Stats {
     /*
@@ -15,4 +19,5 @@ public class Stats {
     private long contadorADNMutante;
     private long contadorADNHumano;
     private double ratio;
+
 }

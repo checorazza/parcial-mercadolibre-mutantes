@@ -1,7 +1,6 @@
 package com.example.Parcial.controller;
 
 import com.example.Parcial.model.Stats;
-import com.example.Parcial.service.MutantService;
 import com.example.Parcial.service.StatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
