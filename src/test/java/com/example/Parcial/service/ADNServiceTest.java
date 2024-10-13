@@ -39,7 +39,14 @@ public class ADNServiceTest {
     --------------------*/
     @Test
     public void testIsMutant_ADNMutante() {
-        String[] adn = {"ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"};
+        String[] adn = {
+                "ATGCGA",
+                "CAGTGC",
+                "TTATGT",
+                "AGAAGG",
+                "CCCCTA",
+                "TCACTG"
+        };
         boolean resultado = adnService.isMutant(adn);
         assertEquals(true, resultado, "Debería detectar ADN mutante (true)");
     }
@@ -51,7 +58,14 @@ public class ADNServiceTest {
     --------------------*/
     @Test
     public void testIsMutant_ADNHumano() {
-        String[] adn = {"ATGCGA","CAGTGC","TTATGT","AGAAGG","CCTCTA","TCACTG"};
+        String[] adn = {
+                "ATGCGA",
+                "CAGTGC",
+                "TTATGT",
+                "AGAAGG",
+                "CCTCTA",
+                "TCACTG"
+        };
         boolean resultado = adnService.isMutant(adn);
         assertEquals(false, resultado, "Debería detectar ADN humano (false)");
     }
@@ -62,7 +76,14 @@ public class ADNServiceTest {
     --------------------*/
     @Test
     public void testIsMutant_SecuenciaHorizontal() {
-        String[] adn = {"AAAAAA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"};
+        String[] adn = {
+                "AAAAAA",
+                "CAGTGC",
+                "TTATGT",
+                "AGAAGG",
+                "CCCCTA",
+                "TCACTG"
+        };
         boolean resultado = adnService.isMutant(adn);
         assertEquals(true, resultado, "Debería detectar ADN mutante (true) de forma horizontal");
     }
@@ -73,7 +94,14 @@ public class ADNServiceTest {
     --------------------*/
     @Test
     public void testIsMutant_SecuenciaVertical() {
-        String[] adn = {"ATGCGA","AAGTGC","ATATGT","AGAAGG","ACCCCT","ATCACT"};
+        String[] adn = {
+                "ATGCGA",
+                "AAGTGC",
+                "ATATGT",
+                "AGAAGG",
+                "ACCCCT",
+                "ATCACT"
+        };
         boolean resultado = adnService.isMutant(adn);
         assertEquals(true, resultado, "Debería detectar ADN mutante (true) de forma vertical");
     }
@@ -85,7 +113,14 @@ public class ADNServiceTest {
     --------------------*/
     @Test
     public void testIsMutant_SecuenciaDiagonalIzqDer() {
-        String[] adn = {"ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"};
+        String[] adn = {
+                "ATGCGA",
+                "CAGTGC",
+                "TTATGT",
+                "AGAAGG",
+                "CCCCTA",
+                "TCACTG"
+        };
         boolean resultado = adnService.isMutant(adn);
         assertEquals(true, resultado, "Debería detectar ADN mutante (true) de forma diagonal de izq a derecha");
     }
@@ -96,7 +131,14 @@ public class ADNServiceTest {
     --------------------*/
     @Test
     public void testIsMutant_SecuenciaDiagonalDerIzq() {
-        String[] adn = {"ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"};
+        String[] adn = {
+                "ATGCGA",
+                "CAGTGC",
+                "TTATGT",
+                "AGAAGG",
+                "CCCCTA",
+                "TCACTG"
+        };
         boolean resultado = adnService.isMutant(adn);
         assertEquals(true, resultado, "Debería detectar ADN mutante (true) de forma diagonal de derecha a izq");
     }
@@ -107,7 +149,13 @@ public class ADNServiceTest {
     --------------------*/
     @Test
     public void testSaveADN() {
-        String[] adn = {"ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"};
+        String[] adn = {
+                "ATGCGA",
+                "CAGTGC",
+                "TTATGT",
+                "AGAAGG",
+                "CCCCTA",
+                "TCACTG"};
         boolean esMutante = adnService.isMutant(adn);
         adnService.saveADN(String.join(",", adn), esMutante);
         verify(adnRepository).save(new ADN(String.join(",", adn), esMutante));

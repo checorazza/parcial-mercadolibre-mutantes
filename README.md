@@ -7,15 +7,21 @@ Parcial de la materia "Desarrollo de Software"
 - Comisión 3k10
 - Año 2024
 
-## Tabla de Contenidos
+
+# Contenidos
+(hacer click para navegar)
 - **[Consigna](#consigna)**
 - **[Ejecución](#ejecucion)**
+    - [Deploy en Render](#deploy)
+    - [Base de Datos](#bd)
+    - [Endpoints](#endpoints)
+- **[Ejemplos de ADN](#adn)**
 
-
-<div id="consigna"> </div>
 
 # Consigna
 **Examen Mercadolibre**
+
+<div id="consigna"> </div>
 
 Magneto quiere reclutar la mayor cantidad de mutantes para poder luchar contra los X-Mens.
 
@@ -61,11 +67,101 @@ Exponer un servicio extra “/stats” que devuelva un Json con las estadística
 
 Tener en cuenta que la API puede recibir fluctuaciones agresivas de tráfico (Entre 100 y 1 millón de peticiones por segundo). Utilizar Jmeter 
 
-<div id="consigna"> </div>
+<div id="ejecucion"> </div>
 
 # EJECUCIÓN
-Pará emoción, recién lo subo
-no sé que lleva un readme salu2
-### Base de datos:
-La base de datos se encuentra almacenada localmente en /h2-parcial
 
+<div id="deploy"> </div>
+
+## Deploy en Render
+La API se encuentra en Render. Puede acceder a ella a través del siguiente enlace:
+
+[insertar enlace cheto acá]
+
+<div id="bd"> </div>
+
+### Base de datos:
+La base de datos se encuentra almacenada localmente en
+
+`http://localhost:8080/h2-parcial`
+
+La consola de H2 debería verse más o menos así:
+
+<img src="extra/h2_consola.png">
+
+
+
+<div id="endpoints"> </div>
+
+### Endpoints
+Las peticiones se pueden realizar a:
+
+- `http://localhost:8080/mutant` 
+
+    **POST -> /mutant**
+
+    Recibe un array de Strings de una secuencia de ADN en JSON, devuelve si la secuencia es de un ADN mutante o humano.
+- `http://localhost:8080/stats`
+
+    **GET -> /stats**
+
+    Devuelve la cantidad de ADN mutante y ADN humano en la base de datos, y el ratio entre ambos.
+
+<div id="adn"> </div>
+
+# Ejemplos de ADN
+Se incluye una lista de ejemplos de ADN mutante/no mutante.
+También el proyecto cuenta con pruebas unitarias con cada caso.
+
+- Ejemplo ADN humano (no mutante):
+```
+{
+    "secuencia": [
+        "ATGCGA",
+        "CAGTGC",
+        "TTATGT",
+        "AGAAGG",
+        "CCTCTA",
+        "TCACTG"
+    ]
+}
+```
+- Ejemplo ADN mutante (horizontal):
+```
+{
+    "secuencia": [
+        "AAAAAA",
+        "CAGTGC",
+        "TTATGT",
+        "AGAAGG",
+        "CCCCTA",
+        "TCACTG"
+    ]
+}
+```
+- Ejemplo ADN mutante (vertical):
+ ```
+ {
+    "secuencia": [
+        "ATGCGA",
+        "AAGTGC",
+        "ATATGT",
+        "AGAAGG",
+        "ACCCCT",
+        "ATCACT"
+    ]
+ }
+```
+- Ejemplo ADN mutante (diagonal):
+```
+{
+    "secuencia": [
+        "ATGCGA",
+        "CAGTGC",
+        "TTATGT",
+        "AGAAGG",
+        "CCCCTA",
+        "TCACTG"
+    ]
+}
+``` 
