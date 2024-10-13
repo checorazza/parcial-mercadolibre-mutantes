@@ -2,12 +2,8 @@ package com.example.Parcial.service;
 
 import com.example.Parcial.model.ADN;
 import com.example.Parcial.repository.ADNRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.Optional;
 
 @Component
 public class ADNService {
@@ -28,9 +24,9 @@ public class ADNService {
     MÉTODO SAVEADN
     Guarda el ADN ingresado
      */
-    public void saveADN(String dna, boolean isMutant) {
+    public void saveADN(String Adn, boolean isMutant) {
         ADN adn = new ADN();
-        adn.setSecuencia(String.join(",", dna));
+        adn.setSecuencia(String.join(",", Adn));
         adn.setEsMutante(isMutant);
         adnRepository.save(adn);
     }

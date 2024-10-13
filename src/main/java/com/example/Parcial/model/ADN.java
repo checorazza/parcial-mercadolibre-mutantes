@@ -26,4 +26,10 @@ public class ADN {
     private Long id;
     private String secuencia; // la secuencia de ADN :)
     private boolean esMutante;
+
+    // Constructor sin ID
+    public ADN(String secuencia, boolean esMutante) {
+        this.secuencia = secuencia;
+        this.esMutante = esMutante;
+    }
 }
