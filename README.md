@@ -40,7 +40,7 @@ Parcial backend de la materia "Desarrollo de Software"
 - **Validación de Entrada**: Asegura que las secuencias de ADN sean válidas antes de procesarlas.
 
 **Otros**
-- **Diagrama de secuencia:** Se encuentra en el siguiente [link](github.com/checorazza/parcial-mercadolibre-mutantes/tree/master/PDFS/) o en la carpeta PDFS del repositorio.
+- **Diagrama de secuencia:** Se encuentra en el siguiente [link](https://github.com/checorazza/parcial-mercadolibre-mutantes/blob/master/PDFS/SECUENCIA%20ISMUTANT.pdf) o en la carpeta PDFS del repositorio.
 - **Pruebas de stress:** Se realizaron tests en JMeter con éxito
 
 Repositorio > PDFS > Diagrama Secuencia
@@ -198,6 +198,60 @@ También el proyecto cuenta con pruebas unitarias con cada caso.
     ]
 }
 ``` 
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
 ㅤ<br>
 ㅤ<br>
 ㅤ<br>
