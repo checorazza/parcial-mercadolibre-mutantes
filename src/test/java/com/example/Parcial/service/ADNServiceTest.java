@@ -62,7 +62,7 @@ public class ADNServiceTest {
                 "ATGCGA",
                 "CAGTGC",
                 "TTATGT",
-                "AGAAGG",
+                "AGAGGG",
                 "CCTCTA",
                 "TCACTG"
         };
@@ -159,5 +159,27 @@ public class ADNServiceTest {
         boolean esMutante = adnService.isMutant(adn);
         adnService.saveADN(String.join(",", adn), esMutante);
         verify(adnRepository).save(new ADN(String.join(",", adn), esMutante));
+    }
+
+    /*--------------------
+    TEST 8:
+    Comprobamos que la función isValid del ADNValidator funciona correctamente pasandole un ADN incorrecto
+    (adn matriz NxM en lugar de NxN)
+    --------------------*/
+    @Test
+    public void testIsMutant_InvalidDNA() {
+        String[] dna = {"ATGCGA","CAGTGC"};
+        assertThrows(IllegalArgumentException.class, () -> adnService.isMutant(dna));
+    }
+
+    /*--------------------
+    TEST 9:
+    Comprobamos que la función isValid del ADNValidator funciona correctamente pasandole un ADN incorrecto
+    (símbolos erroneos)
+    --------------------*/
+    @Test
+    public void testIsMutant_InvalidCharacters() {
+        String[] dna = {"ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTGX"};
+        assertThrows(IllegalArgumentException.class, () -> adnService.isMutant(dna));
     }
 }

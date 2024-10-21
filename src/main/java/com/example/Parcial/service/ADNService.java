@@ -2,6 +2,7 @@ package com.example.Parcial.service;
 
 import com.example.Parcial.model.ADN;
 import com.example.Parcial.repository.ADNRepository;
+import com.example.Parcial.utils.ADNValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,8 @@ public class ADNService {
     @Autowired
     private ADNRepository adnRepository;
 
+    private final ADNValidator adnValidator = new ADNValidator();
+
     /*
     MÉTODO SAVEADN
     Guarda el ADN ingresado
@@ -37,6 +40,9 @@ public class ADNService {
     (ver readme del proyecto)
      */
     public boolean isMutant(String[] adn) {
+        if (!adnValidator.isValid(adn)) {
+            throw new IllegalArgumentException("La secuencia de ADN es inválida");
+        }
         boolean isMutant = checkMutante(adn); //llama a la función checkMutant
         ADN adnEntity = new ADN();
         adnEntity.setSecuencia(String.join(",", adn)); // convierte el array de strings en un string separado por comas y se lo asigna a la entidad ADN recién creada

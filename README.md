@@ -1,5 +1,9 @@
 # PARCIAL DESARROLLO DE SOFTWARE
-Parcial de la materia "Desarrollo de Software"
+Parcial backend de la materia "Desarrollo de Software"
+
+3er año ingeniería en sistemas, UTN
+
+
 
 ## Alumno
 - Corazza María Cecilia
@@ -10,77 +14,75 @@ Parcial de la materia "Desarrollo de Software"
 
 # Contenidos
 (hacer click para navegar)
-- **[Consigna](#consigna)**
-- **[Ejecución](#ejecucion)**
-    - [Deploy en Render](#deploy)
-    - [Base de Datos](#bd)
-    - [Endpoints](#endpoints)
+
+- **[Caracteristicas](#caracteristicas)**
+- **[Estructura del proyecto](#estructura)** 
+- **[Ejecucion](#ejecucion)**
+- **[Deploy en Render](#deploy)**
+- **[Base de Datos](#bd)**
+- **[Endpoints](#endpoints)**
 - **[Ejemplos de ADN](#adn)**
 
 
-# Consigna
-**Examen Mercadolibre**
 
-<div id="consigna"> </div>
+<div id="caracteristicas"></div>
 
-Magneto quiere reclutar la mayor cantidad de mutantes para poder luchar contra los X-Mens.
+# Características
+**Nivel 1**
+- **Detección de Mutantes**: Verifica si una secuencia de ADN es mutante. Un ADN es mutante si posee 4 símbolos seguidos iguales de manera horizontal, vertical, diagonal y diagonal inversa/
 
-Te ha contratado a ti para que desarrolles un proyecto que detecte si un humano es mutante basándose en su secuencia de ADN.
+**Nivel 2**
+- **API REST**: Expone endpoints para verificar secuencias de ADN y obtener estadísticas.
 
-Para eso te ha pedido crear un programa con un método o función con la siguiente firma:
+**Nivel 3**
+- **Base de Datos H2**: Almacena los resultados de las verificaciones de ADN.
+- **Tests Unitarios**: Incluye tests unitarios para asegurar la correcta funcionalidad del servicio.
+- **Validación de Entrada**: Asegura que las secuencias de ADN sean válidas antes de procesarlas.
 
-`boolean isMutant(String[] dna);`
+**Otros**
+- **Diagrama de secuencia:** Se encuentra en el siguiente [link](github.com/checorazza/parcial-mercadolibre-mutantes/tree/master/PDFS/) o en la carpeta PDFS del repositorio.
+- **Pruebas de stress:** Se realizaron tests en JMeter con éxito
 
-En donde recibirás como parámetro un array de Strings que representan cada fila de una tabla de (NxN) con la secuencia del ADN. Las letras de los Strings solo pueden ser: (A,T,C,G), las cuales representa cada base nitrogenada del ADN.
+Repositorio > PDFS > Diagrama Secuencia
 
-<img src="extra/matriz_ejemplo.png">
+<div id="estructura"></div>
 
-Sabrás si un humano es mutante, si encuentras más de una secuencia de cuatro letras iguales, de forma oblicua, horizontal o vertical.
+# Estructura del Proyecto
 
-Ejemplo (Caso mutante):
+**Controladores**
+- **ADNController:** Controlador para manejar las solicitudes HTTP relacionadas con el ADN.
+- **StatsController:** Controlador para manejar las solicitudes HTTP relacionadas con las estadísticas.
 
-String[] dna = {"ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"};
+**Repositorios**
+- **ADNRepository:** Repositorio para interactuar con la base de datos H2.
 
-En este caso el llamado a la función isMutant(dna) devuelve “true”. 
+**Servicios**
+- **ADNService:** Servicio para la lógica de negocio relacionada con el ADN.
+- **StatsService:** Servicio para la lógica de negocio relacionada con las estadísticas.
 
-Desarrolla el algoritmo de la manera más eficiente posible programado en el lenguaje Java con spring boot. Crea las clases necesarias y la verificación en el método main. 
+**DTOs**
+- **ADNRequest:** Encapsula el arreglo de Strings de la secuencia de ADN
 
-## Desafíos:
+**Utils**
+- **ADNValidator:** Validador para asegurar que las secuencias de ADN sean válidas.
 
-### Nivel 1:
-Programa  en java spring boot que cumpla con el método pedido por Magneto utilizando una arquitectura en capas de controladores, servicios y repositorios.
+**Tests**
 
-### Nivel 2:
-Crear una API REST, hostear esa API en un cloud computing libre (Render), crear el servicio “/mutant/” en donde se pueda detectar si un humano es mutante enviando la secuencia de ADN mediante un HTTP POST con un Json el cual tenga el siguiente formato:
+El proyecto incluye tests unitarios para ADNService utilizando JUnit y Mockito. Los tests verifican diferentes casos de prueba, incluyendo secuencias de ADN mutantes y no mutantes, así como validaciones de entrada.
 
-POST → /mutant/
-{ “dna”:["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]
-}
 
-En caso de verificar un mutante, debería devolver un HTTP 200-OK, en caso contrario un 403-Forbidden
+<div id="ejecucion">
 
-### Nivel 3:
-Anexar una base de datos en H2, la cual guarde los ADN’s verificados con la API. Solo 1 registro por ADN.
-Exponer un servicio extra “/stats” que devuelva un Json con las estadísticas de las verificaciones de ADN: 
-
-{“count_mutant_dna”:40, “count_human_dna”:100: “ratio”:0.4}
-
-Tener en cuenta que la API puede recibir fluctuaciones agresivas de tráfico (Entre 100 y 1 millón de peticiones por segundo). Utilizar Jmeter 
-
-<div id="ejecucion"> </div>
-
-# EJECUCIÓN
-
-<div id="deploy"> </div>
+# Ejecución
 
 ## Deploy en Render
 La API se encuentra en Render. Puede acceder a ella a través del siguiente enlace:
 
-[insertar enlace cheto acá]
+https://parcial-mercadolibre-mutantes.onrender.com
 
-<div id="bd"> </div>
 
-### Base de datos:
+
+## Base de datos:
 La base de datos se encuentra almacenada localmente en
 
 `http://localhost:8080/h2-parcial`
@@ -91,21 +93,52 @@ La consola de H2 debería verse más o menos así:
 
 
 
-<div id="endpoints"> </div>
-
-### Endpoints
+## Endpoints
 Las peticiones se pueden realizar a:
 
-- `http://localhost:8080/mutant` 
+**POST -> /mutant**
 
-    **POST -> /mutant**
+- Localmente: `http://localhost:8080/mutant`
+- En Render: https://parcial-mercadolibre-mutantes.onrender.com/mutant 
 
     Recibe un array de Strings de una secuencia de ADN en JSON, devuelve si la secuencia es de un ADN mutante o humano.
-- `http://localhost:8080/stats`
 
-    **GET -> /stats**
+**GET -> /stats**
+- Localmente: `http://localhost:8080/stats`
+- En render: https://parcial-mercadolibre-mutantes.onrender.com/stats
 
-    Devuelve la cantidad de ADN mutante y ADN humano en la base de datos, y el ratio entre ambos.
+    Devuelve la cantidad de ADN mutante y ADN humano en la base de datos, y el ratio entre ambos (cantidad de mutantes por cada humano).
+
+## Uso
+
+### Verificar Secuencia de ADN
+Envía una solicitud POST a /mutant/ con un JSON que contenga la secuencia de ADN:
+
+```
+{
+  "secuencia": [
+    "ATGCGA",
+    "CAGTGC",
+    "TTATGT",
+    "AGAAGG",
+    "CCCCTA",
+    "TCACTG"]
+}
+```
+
+- Respuesta 200 OK: Si la secuencia de ADN es mutante.
+- Respuesta 403 Forbidden: Si la secuencia de ADN no es mutante.
+
+### Obtener Estadísticas
+Envía una solicitud GET a /stats/ para obtener las estadísticas de las verificaciones de ADN:
+
+```
+{
+  "contadorADNMutante": 40,
+  "contadorADNHumano": 100,
+  "ratio": 0.4
+}
+```
 
 <div id="adn"> </div>
 
@@ -120,7 +153,7 @@ También el proyecto cuenta con pruebas unitarias con cada caso.
         "ATGCGA",
         "CAGTGC",
         "TTATGT",
-        "AGAAGG",
+        "AGAGGG",
         "CCTCTA",
         "TCACTG"
     ]
@@ -165,3 +198,10 @@ También el proyecto cuenta con pruebas unitarias con cada caso.
     ]
 }
 ``` 
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+<img height=100px src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d49ba913-dbd1-4505-99cc-9bd433c6e42d/dfn1syc-a38b5137-1ca4-449c-87eb-28194b59c91a.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Q0OWJhOTEzLWRiZDEtNDUwNS05OWNjLTliZDQzM2M2ZTQyZFwvZGZuMXN5Yy1hMzhiNTEzNy0xY2E0LTQ0OWMtODdlYi0yODE5NGI1OWM5MWEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.HlvaHhNykZP4u_AX2nKonf_V-7Os86qjiVsG4YSFfYo">
