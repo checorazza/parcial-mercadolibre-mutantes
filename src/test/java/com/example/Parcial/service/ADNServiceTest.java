@@ -4,6 +4,7 @@ import com.example.Parcial.model.ADN;
 import com.example.Parcial.repository.ADNRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -61,8 +62,8 @@ public class ADNServiceTest {
         String[] adn = {
                 "ATGCGA",
                 "CAGTGC",
-                "TTATGT",
-                "AGAGGG",
+                "TTATTT",
+                "AGACGG",
                 "CCTCTA",
                 "TCACTG"
         };
@@ -149,16 +150,14 @@ public class ADNServiceTest {
     --------------------*/
     @Test
     public void testSaveADN() {
-        String[] adn = {
-                "ATGCGA",
-                "CAGTGC",
-                "TTATGT",
-                "AGAAGG",
-                "CCCCTA",
-                "TCACTG"};
-        boolean esMutante = adnService.isMutant(adn);
-        adnService.saveADN(String.join(",", adn), esMutante);
-        verify(adnRepository).save(new ADN(String.join(",", adn), esMutante));
+        String[] dna = {"ATGCGA", "CAGTGC", "TTATTT", "AGACGG", "GCGTCA", "TCACTG"};
+        boolean isMutant = false;
+        adnService.saveADN(String.join(",", dna), isMutant);
+        ArgumentCaptor<ADN> adnCaptor = ArgumentCaptor.forClass(ADN.class);
+        verify(adnRepository).save(adnCaptor.capture());
+        ADN capturedADN = adnCaptor.getValue();
+        assertEquals(String.join(",", dna), capturedADN.getSecuencia());
+        assertEquals(isMutant, capturedADN.isEsMutante());
     }
 
     /*--------------------

@@ -41,6 +41,14 @@ Parcial backend de la materia "Desarrollo de Software"
 
 **Otros**
 - **Diagrama de secuencia:** Se encuentra en el siguiente [link](https://github.com/checorazza/parcial-mercadolibre-mutantes/blob/master/PDFS/SECUENCIA%20ISMUTANT.pdf) o en la carpeta PDFS del repositorio.
+
+#### IsMutant()
+<img src="./PDFS/SECUENCIA ISMUTANT.jpg">
+
+#### GetStats()
+<img src="./PDFS/SECUENCIA GETSTATS.png">
+
+
 - **Pruebas de stress:** Se realizaron tests en JMeter con éxito
 
 Repositorio > PDFS > Diagrama Secuencia
@@ -69,6 +77,16 @@ Repositorio > PDFS > Diagrama Secuencia
 **Tests**
 
 El proyecto incluye tests unitarios para ADNService utilizando JUnit y Mockito. Los tests verifican diferentes casos de prueba, incluyendo secuencias de ADN mutantes y no mutantes, así como validaciones de entrada.
+
+Los test, de acuerdo a Java Coverage instalado por defecto en el IDE IntelliJ, cubren el 100% del código:
+<img src="./PDFS/CODE COVERAGE.png">
+
+También incluye tests de stress realizados con éxito con 1000 peticiones de usuarios, el cual el archivo .jmx y las capturas con los resultados está disponible en la carpeta "PDFs"
+
+<img src="./PDFS/TEST STRESS (1).png">
+<img src="./PDFS/TEST STRESS (2).png">
+<img src="./PDFS/TEST STRESS (3).png">
+<img src="./PDFS/TEST STRESS (4).png">
 
 
 <div id="ejecucion">
@@ -152,8 +170,8 @@ También el proyecto cuenta con pruebas unitarias con cada caso.
     "secuencia": [
         "ATGCGA",
         "CAGTGC",
-        "TTATGT",
-        "AGAGGG",
+        "TTATTT",
+        "AGACGG",
         "CCTCTA",
         "TCACTG"
     ]
@@ -198,6 +216,37 @@ También el proyecto cuenta con pruebas unitarias con cada caso.
     ]
 }
 ``` 
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
+ㅤ<br>
 ㅤ<br>
 ㅤ<br>
 ㅤ<br>

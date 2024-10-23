@@ -47,7 +47,6 @@ public class ADNService {
         ADN adnEntity = new ADN();
         adnEntity.setSecuencia(String.join(",", adn)); // convierte el array de strings en un string separado por comas y se lo asigna a la entidad ADN recién creada
         adnEntity.setEsMutante(isMutant); //asigna la verificacion (true/false) de si es o no mutante de acuerdo al resultado de la función llamada previamente
-        // adnService.save(adn, isMutant);// guarda la entidad
         return isMutant; //devuelve el resultado de la verificacion
     }
 
